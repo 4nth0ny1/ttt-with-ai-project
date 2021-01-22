@@ -36,7 +36,7 @@ class Game
     end 
 
     def over?
-        won? || draw?
+       won? || draw?
     end
 
     def winner 
@@ -56,15 +56,28 @@ class Game
         end
     end
 
-    def play 
-        won?
-        draw?
-        over?
-        if over?
-          puts winner ? "Congratulations #{winner}!" : "Cat's Game!"
-        else
-          turn
-          play
-        end 
-    end 
+    # def play 
+        
+    #     won?
+    #     draw?
+    #     over?
+    #     binding.pry
+    #     if over?
+    #       puts winner ? "Congratulations #{winner}!" : "Cat's Game!"
+    #     else
+           
+    #       turn
+          
+    #       play
+    #     end 
+    # end 
+
+    def play
+        turn until over?
+        if won?
+          puts "Congratulations #{winner}!"
+        elsif draw?
+          puts "Cat's Game!"
+        end
+      end
 end 

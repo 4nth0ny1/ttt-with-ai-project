@@ -56,6 +56,5 @@ class Board
     def update(input, player)
         ## updates the cells in the board with the player token according to the input
         cells[input.to_i-1] = player.token
-
     end
 end 
