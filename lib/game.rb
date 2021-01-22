@@ -46,38 +46,25 @@ class Game
     end 
 
     def turn
-        puts "Please enter 1-9"
-        move(board)
+        player = current_player
+        current_move = player.move(board)
 
-        if @board.valid_move?(input)
-            current_player
+        if @board.valid_move?(current_move)
+            @board.update(current_move, player)
         else 
-            puts "Please enter 1-9"
+            turn
         end
     end
 
-    # def turn
-    #     puts "Pick a space between 1-9"
-    #     input = gets.strip
-    #     index = input_to_index(input)
-    #     if @board.valid_move?(index)
-    #       token = current_player
-    #       move(index, token)
-    #     else
-    #       turn
-    #     end
-    #     display_board
-    #   end
-
-    # def play 
-    #     won?
-    #     draw?
-    #     over?
-    #     if over?
-    #       puts winner ? "Congratulations #{winner}!" : "Cat's Game!"
-    #     else
-    #       turn
-    #       play
-    #     end 
-    # end 
+    def play 
+        won?
+        draw?
+        over?
+        if over?
+          puts winner ? "Congratulations #{winner}!" : "Cat's Game!"
+        else
+          turn
+          play
+        end 
+    end 
 end 
